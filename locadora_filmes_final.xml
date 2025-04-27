@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <table name="Filme">
+        <column name="id_filme" type="integer" pk="true"/>
+        <column name="titulo" type="varchar(255)"/>
+        <column name="genero" type="varchar(100)"/>
+        <column name="sinopse" type="text"/>
+        <column name="duracao" type="integer"/>
+        <column name="preco" type="decimal(10,2)"/>
+    </table>
+    <table name="Ator">
+        <column name="id_ator" type="integer" pk="true"/>
+        <column name="nome" type="varchar(255)"/>
+        <column name="nacionalidade" type="varchar(100)"/>
+        <column name="data_nascimento" type="date"/>
+    </table>
+    <table name="Cliente">
+        <column name="id_cliente" type="integer" pk="true"/>
+        <column name="nome" type="varchar(255)"/>
+        <column name="email" type="varchar(255)"/>
+        <column name="endereco" type="varchar(255)"/>
+        <column name="cpf" type="varchar(14)"/>
+    </table>
+    <table name="Locacao">
+        <column name="id_locacao" type="integer" pk="true"/>
+        <column name="data_locacao" type="date"/>
+        <column name="data_devolucao" type="date"/>
+        <column name="tipo_locacao" type="varchar(100)"/>
+        <column name="id_cliente" type="integer" fk="Cliente"/>
+        <column name="id_filme" type="integer" fk="Filme"/>
+    </table>
+    <relationship name="Filme_Ator" type="n:n">
+        <table1 name="Filme" key="id_filme"/>
+        <table2 name="Ator" key="id_ator"/>
+    </relationship>
+</database>
